@@ -377,6 +377,45 @@ html:not(.js) .filter { display: none; }
 .facts dt { font-weight: 700; color: var(--muted); font-size: var(--fs-sm); }
 .facts dd { min-width: 0; font-weight: 700; }
 
+/* 経歴タイムライン */
+.history-wrap { margin-top: 24px; }
+
+/* 目指すエンジニア像・展望 */
+.goal-wrap { margin-top: 24px; }
+.goal-text { margin-top: 8px; }
+.outlook { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; counter-reset: ol; }
+.outlook-item { counter-increment: ol; position: relative; padding: 14px 16px 16px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--card2); }
+.outlook-item:not(:last-child)::after { content: ""; position: absolute; right: -10px; top: 50%; width: 8px; height: 8px; border-top: 2px solid var(--accent); border-right: 2px solid var(--accent); transform: translate(0, -50%) rotate(45deg); }
+.outlook-head { font-weight: 800; display: flex; align-items: center; gap: 8px; }
+.outlook-head::before { content: counter(ol); display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: var(--bg); font-family: var(--font-mono); font-size: var(--fs-xs); font-weight: 700; flex: none; }
+.outlook-text { margin-top: 6px; font-size: var(--fs-sm); line-height: 1.8; }
+@media screen and (max-width: 900px) { .outlook { grid-template-columns: 1fr; } .outlook-item:not(:last-child)::after { right: auto; left: 24px; top: auto; bottom: -11px; transform: rotate(135deg); } }
+@media print { .outlook-item { break-inside: avoid; } }
+
+/* コード抜粋 */
+.code-block { margin: 4px 0 0; border: 1px solid var(--line); border-radius: var(--radius-card); overflow: hidden; background: var(--card2); }
+.code-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); font-size: var(--fs-sm); font-weight: 700; }
+.code-lang { font-size: var(--fs-xs); color: var(--muted); white-space: nowrap; flex: none; }
+.code-block pre { margin: 0; padding: 14px 16px; max-height: 26em; overflow: auto; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.65; tab-size: 4; -moz-tab-size: 4; white-space: pre; }
+.code-block pre:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.code-caption { padding: 10px 16px; border-top: 1px solid var(--line); font-size: var(--fs-sm); color: var(--muted); }
+@media print { .code-block pre { max-height: none; overflow: visible; white-space: pre-wrap; font-size: 9px; } }
+.history-title { font-family: var(--font-display); font-weight: 900; font-synthesis: none; font-size: var(--fs-lg); }
+.history-lead { color: var(--muted); font-size: var(--fs-sm); margin-top: 6px; }
+.history { list-style: none; margin: 18px 0 0; padding: 0; position: relative; }
+.history::before { content: ""; position: absolute; left: 4.5em; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
+.history-item { display: grid; grid-template-columns: 4.5em 1fr; gap: 24px; position: relative; padding-bottom: 22px; }
+.history-item:last-child { padding-bottom: 0; }
+.history-item::before { content: ""; position: absolute; left: calc(4.5em - 5px); top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.history-item:last-child::before { background: var(--accent); }
+.history-when { font-family: var(--font-mono); font-size: var(--fs-xs); font-weight: 700; color: var(--accent); letter-spacing: .04em; padding-top: 3px; text-align: right; padding-right: 14px; }
+.history-body { min-width: 0; padding-left: 4px; }
+.history-head { font-weight: 800; }
+.history-text { margin-top: 4px; font-size: var(--fs-sm); line-height: 1.85; }
+.history-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; padding: 0; }
+.history-tags li { font-size: var(--fs-xs); font-weight: 700; padding: 3px 10px; border: 1px solid var(--line); border-radius: var(--radius-tag); color: var(--muted); }
+@media print { .history-item { break-inside: avoid; } }
+
 /* ---------- 11. スキル ---------- */
 .legend { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-bottom: 24px; font-size: var(--fs-sm); color: var(--muted); }
 .legend li { display: flex; align-items: center; gap: 8px; }
