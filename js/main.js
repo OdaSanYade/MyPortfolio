@@ -492,24 +492,6 @@
     hit[2]();
   });
 
-  /* ---------- 作品の絞り込み ---------- */
-  const chips = $$('.chip[data-filter]');
-  const filterStatus = $('.filter-status');
-  const filterEmpty = $('.filter-empty');
-  const applyFilter = (tag) => {
-    let shown = 0;
-    $$('.work-card[data-key]').forEach((card) => {
-      const tags = (card.dataset.tags || '').split('|');
-      const ok = !tag || tags.includes(tag);
-      card.classList.toggle('is-filtered-out', !ok);
-      if (ok) shown += 1;
-    });
-    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.filter === tag)));
-    if (filterStatus) filterStatus.textContent = tag ? tag + '：' + shown + '作品' : '';
-    if (filterEmpty) filterEmpty.hidden = shown > 0;
-  };
-  chips.forEach((c) => c.addEventListener('click', () => applyFilter(c.dataset.filter)));
-
   /* ---------- 根拠リンクのプレビュー（マウスとキーボード） ---------- */
   const peek = $('#peek');
   const canHover = window.matchMedia('(hover: hover)').matches;
